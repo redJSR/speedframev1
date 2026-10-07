@@ -3,821 +3,899 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greenbox Speedframe - Professional Web-SWF Animator</title>
-    <!-- Ruffle Web Player Integration -->
-    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <title>Vectormotion Speedframe MX - Windows XP Edition</title>
+    <!-- Tailwind CSS for utility positioning and structure -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Retro Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tahoma:wght@400;700&family=Trebuchet+MS:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --win-bg: #ece9d8;
-            --win-border-light: #ffffff;
-            --win-border-dark: #716f64;
-            --win-border-darker: #42413d;
-            --title-bg: linear-gradient(90deg, #0a246a 0%, #a6caf0 100%);
-            --active-blue: #316ac5;
-            --panel-bg: #e0ded0;
-            --stage-bg: #808080;
-            --greenbox-green: #2ecc71;
-            --greenbox-dark: #1b5e20;
-        }
-
-        * {
-            box-sizing: border-box;
-            user-select: none;
-            -webkit-user-select: none;
+            --xp-bg-tan: #F5EFEB;
+            --xp-border-tan: #D0C3B0;
+            --xp-blue-main: #0058EE;
+            --xp-blue-dark: #0036A6;
+            --xp-blue-light: #388EFF;
+            --xp-panel-bg: #ECE9D8;
+            --xp-button-face: #ECE9D8;
+            --xp-border-light: #FFFFFF;
+            --xp-border-shadow: #ACA899;
+            --xp-border-dark: #716F64;
+            --xp-text-color: #000000;
+            --xp-selection: #316AC5;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Tahoma', 'Segoe UI', Geneva, sans-serif;
+            font-family: 'Tahoma', 'Segoe UI', sans-serif;
             font-size: 11px;
-            background-color: var(--win-bg);
+            background-color: #E2DAC8;
             color: #000;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        /* Top Menu Bar */
-        .menu-bar {
-            background-color: var(--win-bg);
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid var(--win-border-dark);
-            padding: 2px 4px;
-            gap: 2px;
-        }
-
-        .menu-item {
-            padding: 2px 6px;
-            cursor: pointer;
-        }
-
-        .menu-item:hover {
-            background-color: var(--active-blue);
-            color: white;
-        }
-
-        /* Main Workspace Layout */
-        .workspace {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
-
-        /* Tools Bar (Left Side) */
-        .toolbar {
-            width: 36px;
-            background-color: var(--win-bg);
-            border-right: 1px solid var(--win-border-dark);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 4px 2px;
-            gap: 2px;
-        }
-
-        .tool-btn {
-            width: 28px;
-            height: 28px;
-            background: var(--win-bg);
-            border-top: 1px solid var(--win-border-light);
-            border-left: 1px solid var(--win-border-light);
-            border-right: 1px solid var(--win-border-dark);
-            border-bottom: 1px solid var(--win-border-Here is a complete, single-file HTML/CSS/JavaScript implementation of **Greenbox Speedframe**. It features a classic 2000s vector editing layout (inspired by Vectorian Giotto and Macromedia Flash 8), complete with a working HTML5 drawing canvas stage, keyframe timeline manager, layer controls, color/properties inspector, and Ruffle preview player integration.
-
-Save this code as an `index.html` file and open it in any modern web browser:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greenbox Speedframe - Professional Web-SWF Animator</title>
-    <!-- Ruffle Flash Emulator Script -->
-    <script src="[https://unpkg.com/@ruffle-rs/ruffle](https://unpkg.com/@ruffle-rs/ruffle)"></script>
-    <style>
-        * {
-            box-sizing: border-box;
             user-select: none;
-            -webkit-user-select: none;
-        }
-
-        body {
+            overflow: hidden;
             margin: 0;
             padding: 0;
-            font-family: 'Tahoma', 'Segoe UI', Geneva, Verdana, sans-serif;
-            font-size: 11px;
-            background-color: #3a3a3a;
-            color: #000;
-            overflow: hidden;
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* --- Classic 2000s Metallic/Grey Theme --- */
-        .classic-panel {
-            background: linear-gradient(180deg, #e6e6e6 0%, #d4d4d4 100%);
-            border-top: 1px solid #ffffff;
-            border-left: 1px solid #ffffff;
-            border-right: 1px solid #808080;
-            border-bottom: 1px solid #808080;
-        }
-
-        .bevel-inset {
-            border-top: 1px solid #808080;
-            border-left: 1px solid #808080;
-            border-right: 1px solid #ffffff;
-            border-bottom: 1px solid #ffffff;
-            background-color: #ffffff;
-        }
-
-        /* --- Main Menu & Top Bar --- */
-        #menu-bar {
-            height: 24px;
-            background: #ece9d8;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #a0a0a0;
-            padding-left: 4px;
-            font-size: 11px;
-        }
-
-        .menu-item {
-            padding: 2px 8px;
-            cursor: pointer;
-        }
-
-        .menu-item:hover {
-            background-color: #316ac5;
-            color: #ffffff;
-        }
-
-        #tool-bar {
-            height: 32px;
-            background: #dedede;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            padding: 0 6px;
-            border-bottom: 1px solid #999;
-        }
-
-        .tool-btn {
-            background: linear-gradient(180deg, #f0f0f0 0%, #d0d0d0 100%);
-            border-top: 1px solid #fff;
-            border-left: 1px solid #fff;
-            border-right: 1px solid #707070;
-            border-bottom: 1px solid #707070;
-            padding: 3px 8px;
-            font-size: 11px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .tool-btn:active, .tool-btn.active {
-            background: #c0c0c0;
-            border-top: 1px solid #707070;
-            border-left: 1px solid #707070;
-            border-right: 1px solid #fff;
-            border-bottom: 1px solid #fff;
-        }
-
-        /* --- Layout Container --- */
-        #workspace {
-            flex: 1;
-            display: flex;
-            overflow: hidden;
-        }
-
-        /* Left Tools Palette */
-        #left-palette {
-            width: 52px;
-            background: #d8d8d8;
-            border-right: 1px solid #999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 4px 0;
-            gap: 4px;
-        }
-
-        .palette-icon {
-            width: 22px;
-            height: 22px;
-            background: #e6e6e6;
-            border-top: 1px solid #fff;
-            border-left: 1px solid #fff;
-            border-right: 1px solid #707070;
-            border-bottom: 1px solid #707070;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 12px;
-        }
-
-        .palette-icon.selected {
-            background: #b5c2d6;
-            border-top: 1px solid #707070;
-            border-left: 1px solid #707070;
-            border-right: 1px solid #fff;
-            border-bottom: 1px solid #fff;
-        }
-
-        /* Center Stage Area */
-        #stage-container {
-            flex: 1;
-            background: #666666;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: auto;
-        }
-
-        #stage-canvas {
-            background: #ffffff;
-            box-shadow: 0px 4px 12px rgba(0,0,0,0.5);
-            cursor: crosshair;
-        }
-
-        /* Right Inspector Dock */
-        #right-dock {
-            width: 230px;
-            background: #d8d8d8;
-            border-left: 1px solid #999;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .dock-header {
-            background: linear-gradient(180deg, #c0c0c0 0%, #a8a8a8 100%);
-            padding: 3px 6px;
-            font-weight: bold;
-            color: #000;
-            border-bottom: 1px solid #808080;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .dock-body {
-            padding: 8px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .prop-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .prop-row label {
-            font-size: 11px;
-        }
-
-        .prop-row input[type="number"], .prop-row input[type="text"], .prop-row select {
-            width: 70px;
-            font-size: 11px;
-            padding: 1px;
-        }
-
-        /* Bottom Section: Timeline & Player */
-        #bottom-panel {
-            height: 180px;
-            background: #d8d8d8;
-            border-top: 2px solid #a0a0a0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        #timeline-header {
-            height: 22px;
-            background: #c0c0c0;
-            display: flex;
-            align-items: center;
-            padding: 0 6px;
-            gap: 12px;
-            border-bottom: 1px solid #999;
-        }
-
-        #timeline-content {
-            flex: 1;
-            display: flex;
-            overflow: hidden;
-        }
-
-        #layer-list {
-            width: 140px;
-            background: #ecedcf;
-            border-right: 1px solid #999;
-            overflow-y: auto;
-        }
-
-        .layer-item {
-            height: 20px;
-            border-bottom: 1px solid #c0c0c0;
-            display: flex;
-            align-items: center;
-            padding: 0 4px;
-            font-size: 10px;
-            background: #fdfdfd;
-            cursor: pointer;
-        }
-
-        .layer-item.active {
-            background: #316ac5;
-            color: #fff;
-        }
-
-        #frame-grid {
-            flex: 1;
-            background: #fff;
-            overflow-x: auto;
-            position: relative;
-        }
-
-        .frame-ruler {
-            height: 18px;
-            background: #dedede;
-            border-bottom: 1px solid #999;
-            display: flex;
-        }
-
-        .ruler-num {
-            width: 25px;
-            border-right: 1px solid #bbb;
-            font-size: 9px;
-            text-align: center;
-            line-height: 18px;
-            color: #555;
-        }
-
-        .frame-track {
-            height: 20px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-        }
-
-        .frame-cell {
-            width: 25px;
-            height: 100%;
-            border-right: 1px solid #e0e0e0;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .frame-cell.keyframe {
-            background-color: #c0c0c0;
-        }
-
-        .frame-cell.keyframe::after {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: #000;
-            border-radius: 50%;
-            position: absolute;
-            top: 7px;
-            left: 9px;
-        }
-
-        .frame-cell.active-frame {
-            border: 1px solid #ff0000 !important;
-        }
-
-        /* --- Ruffle Preview Modal --- */
-        #ruffle-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100vw;
-            height: 100vh;
-            background: rgba(0,0,0,0.7);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
         }
 
-        #ruffle-window {
-            width: 600px;
-            height: 450px;
-            background: #ece9d8;
-            border: 2px solid #0055ea;
-            border-radius: 4px 4px 0 0;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0px 8px 24px rgba(0,0,0,0.6);
+        /* Classic XP Bevel Box Rules */
+        .xp-outset {
+            border-top: 1px solid #FFFFFF;
+            border-left: 1px solid #FFFFFF;
+            border-right: 1px solid #716F64;
+            border-bottom: 1px solid #716F64;
+            box-shadow: inset -1px -1px 0px #ACA899, inset 1px 1px 0px #DFDFDF;
         }
 
-        #ruffle-titlebar {
-            height: 24px;
-            background: linear-gradient(90deg, #0058ee 0%, #3a93ff 100%);
-            color: white;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 6px;
+        .xp-inset {
+            border-top: 1px solid #716F64;
+            border-left: 1px solid #716F64;
+            border-right: 1px solid #FFFFFF;
+            border-bottom: 1px solid #FFFFFF;
+            box-shadow: inset 1px 1px 0px #ACA899, inset -1px -1px 0px #DFDFDF;
+            background-color: #FFFFFF;
         }
 
-        #ruffle-stage {
-            flex: 1;
-            background: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .xp-button {
+            background: linear-gradient(180deg, #FFFFFF 0%, #ECE9D8 45%, #DBD6C3 87%, #D8D2BD 100%);
+            border-top: 1px solid #003C74;
+            border-left: 1px solid #003C74;
+            border-right: 1px solid #003C74;
+            border-bottom: 1px solid #003C74;
+            border-radius: 3px;
+            box-shadow: inset 1px 1px 0px #FFFFFF, inset -1px -1px 0px #B6B3A4;
+            cursor: pointer;
+            padding: 2px 6px;
+        }
+
+        .xp-button:hover {
+            background: linear-gradient(180deg, #FFF0CF 0%, #FEE1A9 45%, #FCE082 87%, #F6DA75 100%);
+            border-color: #E59700;
+        }
+
+        .xp-button:active {
+            background: linear-gradient(180deg, #CBD2D8 0%, #E2E8ED 100%);
+            box-shadow: inset 1px 1px 2px #716F64;
+        }
+
+        /* Windows XP Titlebar Gradient */
+        .xp-titlebar {
+            background: linear-gradient(180deg, 
+                #0058EE 0%, 
+                #3593FF 4%, 
+                #288EFF 6%, 
+                #0060F0 8%, 
+                #0052E0 14%, 
+                #0040C0 40%, 
+                #0032B0 88%, 
+                #002498 93%, 
+                #001880 100%);
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        /* Close Button Pixel Look */
+        .xp-close-btn {
+            background: linear-gradient(180deg, #E96237 0%, #D84218 50%, #B82A06 100%);
+            border: 1px solid #FFFFFF;
+            box-shadow: 0 0 2px rgba(0,0,0,0.6);
+            border-radius: 3px;
+        }
+        .xp-close-btn:hover {
+            filter: brightness(1.2);
+        }
+
+        /* Timeline grid styling */
+        .tl-frame-cell {
+            width: 9px;
+            height: 20px;
+            border-right: 1px solid #D0C3B0;
+            border-bottom: 1px solid #D0C3B0;
+            background-color: #FFFFFF;
+            cursor: pointer;
+            position: relative;
+        }
+        .tl-frame-cell.has-keyframe {
+            background-color: #E2E2E2;
+        }
+        .tl-frame-cell.has-keyframe::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 2px;
+            width: 5px;
+            height: 5px;
+            background-color: #000;
+            border-radius: 50%;
+        }
+        .tl-frame-cell.active-frame {
+            background-color: #FF1A1A !important;
+        }
+
+        .tool-active {
+            background-color: #FFD899 !important;
+            border: 1px solid #E59700 !important;
+            box-shadow: inset 1px 1px 1px rgba(0,0,0,0.2) !important;
+        }
+
+        /* Dropdown Menus */
+        .menu-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #FFFFFF;
+            border: 1px solid #002D96;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            z-index: 100;
+            min-width: 140px;
+        }
+        .menu-item:hover {
+            background-color: #316AC5;
+            color: #FFFFFF;
         }
     </style>
 </head>
-<body>
+<body class="flex flex-col h-screen w-screen p-1.5 box-border bg-[#E6DEC9]">
 
-    <!-- Menu Bar -->
-    <div id="menu-bar">
-        <div class="menu-item">File</div>
-        <div class="menu-item">Edit</div>
-        <div class="menu-item">View</div>
-        <div class="menu-item">Insert</div>
-        <div class="menu-item">Modify</div>
-        <div class="menu-item">Control</div>
-        <div class="menu-item">Window</div>
-        <div class="menu-item">Help</div>
-    </div>
+    <div class="flex-1 flex flex-col xp-outset rounded-t-md overflow-hidden bg-[#ECE9D8] border-[#0036A6] border">
 
-    <!-- Quick Tool Bar -->
-    <div id="tool-bar">
-        <button class="tool-btn" onclick="clearCanvas()">📄 New</button>
-        <button class="tool-btn" onclick="addKeyframe()">🔑 Insert Keyframe</button>
-        <button class="tool-btn" onclick="togglePlay()" id="play-btn">▶ Play</button>
-        <div style="width:1px; height:18px; background:#aaa; margin:0 4px;"></div>
-        <button class="tool-btn" style="color: #006600;" onclick="exportSWF()">⚡ Export SWF (Ruffle)</button>
-    </div>
+        <!-- WINDOWS XP TITLEBAR -->
+        <div class="xp-titlebar h-8 px-2 flex items-center justify-between text-white font-bold select-none cursor-default">
+            <div class="flex items-center space-x-2">
+                <!-- VECTORMOTION CHEVRON LOGO (Interactive Home Link) -->
+                <div id="vm-logo-btn" class="flex items-center gap-1 cursor-pointer hover:opacity-90 bg-slate-900/20 px-1.5 py-0.5 rounded border border-white/20" title="Click to open Vectormotion Portal Home">
+                    <svg width="22" height="14" viewBox="0 0 100 65" class="drop-shadow">
+                        <!-- Green chevron left -->
+                        <path d="M 45,5 L 15,32.5 L 45,60 L 30,60 L 0,32.5 L 30,5 Z" fill="#22C55E" />
+                        <!-- Black chevron left -->
+                        <path d="M 80,5 L 50,32.5 L 80,60 L 65,60 L 35,32.5 L 65,5 Z" fill="#1E293B" />
+                    </svg>
+                    <span class="text-xs font-normal tracking-tight text-white font-sans lowercase font-bold" style="font-family: 'Trebuchet MS', sans-serif;">vectormotion</span>
+                </div>
 
-    <!-- Workspace -->
-    <div id="workspace">
-        
-        <!-- Left Vector Tools Palette -->
-        <div id="left-palette">
-            <div class="palette-icon selected" id="tool-brush" title="Brush Tool" onclick="selectTool('brush')">🖌</div>
-            <div class="palette-icon" id="tool-line" title="Line Tool" onclick="selectTool('line')">╱</div>
-            <div class="palette-icon" id="tool-rect" title="Rectangle Tool" onclick="selectTool('rect')">▭</div>
-            <div class="palette-icon" id="tool-circle" title="Oval Tool" onclick="selectTool('circle')">◯</div>
-            <div class="palette-icon" id="tool-select" title="Selection" onclick="selectTool('select')">↖</div>
-        </div>
+                <span class="text-white/40">|</span>
 
-        <!-- Stage Container -->
-        <div id="stage-container">
-            <canvas id="stage-canvas" width="550" height="300"></canvas>
-        </div>
-
-        <!-- Right Properties Dock -->
-        <div id="right-dock">
-            <div class="dock-header">
-                <span>Properties</span>
-                <span>x</span>
+                <!-- SPEEDFRAME APP BADGE ICON -->
+                <div class="flex items-center gap-1.5">
+                    <div class="w-5 h-5 rounded-full bg-gradient-to-tr from-emerald-600 via-green-400 to-emerald-200 border border-white/80 shadow flex items-center justify-center font-bold text-[10px] text-emerald-950 italic">
+                        S
+                    </div>
+                    <span class="text-xs tracking-wide text-amber-100 font-normal">Vectormotion Speedframe MX 2004 - [Untitled-1]</span>
+                </div>
             </div>
-            <div class="dock-body">
-                <div class="prop-row">
-                    <label>Frame Rate (FPS):</label>
-                    <input type="number" id="fps-input" value="12" min="1" max="60" onchange="updateFPS(this.value)">
-                </div>
-                <div class="prop-row">
-                    <label>Stage Color:</label>
-                    <input type="color" id="stage-bg" value="#ffffff" onchange="updateStageBG(this.value)">
-                </div>
-                <hr style="width:100%; border:0; border-top:1px solid #b0b0b0;">
-                <div class="dock-header" style="margin:-8px -8px 8px -8px;">
-                    <span>Color Mixer</span>
-                </div>
-                <div class="prop-row">
-                    <label>Stroke Color:</label>
-                    <input type="color" id="stroke-color" value="#000000">
-                </div>
-                <div class="prop-row">
-                    <label>Fill Color:</label>
-                    <input type="color" id="fill-color" value="#76ce38">
-                </div>
-                <div class="prop-row">
-                    <label>Stroke Width:</label>
-                    <input type="number" id="stroke-width" value="3" min="1" max="20">
-                </div>
+
+            <!-- XP WINDOW CONTROL BUTTONS -->
+            <div class="flex items-center space-x-1">
+                <button class="w-5 h-5 bg-[#2062E0] border border-white/60 rounded text-white flex items-center justify-center text-[10px] font-bold shadow-inner">_</button>
+                <button class="w-5 h-5 bg-[#2062E0] border border-white/60 rounded text-white flex items-center justify-center text-[10px] font-bold shadow-inner">▢</button>
+                <button class="xp-close-btn w-5 h-5 text-white flex items-center justify-center text-[11px] font-bold">✕</button>
             </div>
         </div>
 
-    </div>
+        <!-- MACROMEDIA MENU BAR -->
+        <div class="h-6 bg-[#ECE9D8] border-b border-[#ACA899] flex items-center px-1 text-xs select-none relative z-50">
+            <div class="relative group">
+                <button class="px-2 py-0.5 hover:bg-[#316AC5] hover:text-white rounded-xs">File</button>
+                <div class="menu-dropdown group-hover:block py-1 text-black">
+                    <div class="menu-item px-3 py-1 cursor-pointer" id="menu-new">New Document</div>
+                    <div class="menu-item px-3 py-1 cursor-pointer" id="menu-export-svg">Export Vector (SVG)...</div>
+                    <div class="border-t border-gray-300 my-1"></div>
+                    <div class="menu-item px-3 py-1 cursor-pointer" id="menu-portal">Return to Portal</div>
+                </div>
+            </div>
+            <div class="relative group">
+                <button class="px-2 py-0.5 hover:bg-[#316AC5] hover:text-white rounded-xs">Edit</button>
+                <div class="menu-dropdown group-hover:block py-1 text-black">
+                    <div class="menu-item px-3 py-1 cursor-pointer" id="menu-clear">Clear Frame</div>
+                    <div class="menu-item px-3 py-1 cursor-pointer" id="menu-select-all">Select All Shapes</div>
+                </div>
+            </div>
+            <div class="relative group">
+                <button class="px-2 py-0.5 hover:bg-[#316AC5] hover:text-white rounded-xs">View</button>
+                <div class="menu-dropdown group-hover:block py-1 text-black">
+                    <div class="menu-item px-3 py-1 cursor-pointer" id="menu-toggle-grid">Toggle Stage Grid</div>
+                    <div class="menu-item px-3 py-1 cursor-pointer" id="menu-toggle-onion">Toggle Onion Skin</div>
+                </div>
+            </div>
+            <div class="relative group">
+                <button class="px-2 py-0.5 hover:bg-[#316AC5] hover:text-white rounded-xs">Insert</button>
+                <div class="menu-dropdown group-hover:block py-1 text-black">
+                    <div class="menu-item px-3 py-1 cursor-pointer" id="menu-insert-frame">Timeline Keyframe</div>
+                    <div class="menu-item px-3 py-1 cursor-pointer" id="menu-insert-blank">Blank Keyframe</div>
+                </div>
+            </div>
+            <div class="relative group">
+                <button class="px-2 py-0.5 hover:bg-[#316AC5] hover:text-white rounded-xs">Control</button>
+                <div class="menu-dropdown group-hover:block py-1 text-black">
+                    <div class="menu-item px-3 py-1 cursor-pointer" id="menu-play">Play Movie (Enter)</div>
+                    <div class="menu-item px-3 py-1 cursor-pointer" id="menu-rewind">Rewind (Ctrl+Alt+R)</div>
+                </div>
+            </div>
+            <div class="relative group">
+                <button class="px-2 py-0.5 hover:bg-[#316AC5] hover:text-white rounded-xs">Window</button>
+            </div>
+            <div class="relative group">
+                <button class="px-2 py-0.5 hover:bg-[#316AC5] hover:text-white rounded-xs">Help</button>
+            </div>
+        </div>
 
-    <!-- Timeline Window -->
-    <div id="bottom-panel">
-        <div id="timeline-header">
-            <span style="font-weight:bold;">Timeline</span>
-            <span id="frame-counter" style="color:#555;">Frame: 1 / 20</span>
-        </div>
-        <div id="timeline-content">
-            <div id="layer-list">
-                <div class="layer-item active">● Layer 1</div>
-            </div>
-            <div id="frame-grid">
-                <div class="frame-ruler" id="ruler-container"></div>
-                <div class="frame-track" id="track-container"></div>
-            </div>
-        </div>
-    </div>
+        <!-- MAIN WORKSPACE CONTAINER -->
+        <div class="flex-1 flex overflow-hidden relative bg-[#D0C3B0] p-1 gap-1">
 
-    <!-- Ruffle SWF Preview Modal -->
-    <div id="ruffle-modal">
-        <div id="ruffle-window">
-            <div id="ruffle-titlebar">
-                <span>Greenbox Speedframe - SWF Player (Powered by Ruffle)</span>
-                <span style="cursor:pointer;" onclick="closeRuffleModal()">✕</span>
+            <!-- VECTORMOTION SPEEDFRAME APP INTERFACE (MAIN VIEW) -->
+            <div id="speedframe-workspace" class="flex-1 flex flex-col overflow-hidden w-full h-full">
+
+                <!-- TOP DOCKED TIMELINE -->
+                <div class="h-32 bg-[#ECE9D8] xp-outset flex flex-col mb-1 select-none">
+                    <!-- Timeline Controls & Layer Header Bar -->
+                    <div class="h-6 bg-[#DBD6C3] border-b border-[#ACA899] flex items-center justify-between px-2 text-[11px]">
+                        <div class="flex items-center space-x-3">
+                            <span class="font-bold text-[#4B473D] flex items-center gap-1">
+                                <i data-lucide="layers" class="w-3.5 h-3.5 text-emerald-700"></i> Timeline Layers
+                            </span>
+                            <div class="flex items-center space-x-1">
+                                <button id="btn-add-layer" class="xp-button text-[10px] px-1.5 py-0"> New Layer</button>
+                                <button id="btn-delete-layer" class="xp-button text-[10px] px-1.5 py-0 text-red-700"> Delete</button>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Playback Controls -->
+                        <div class="flex items-center space-x-2">
+                            <button id="btn-tb-play" class="xp-button flex items-center gap-1 px-2 py-0 font-bold text-emerald-800">
+                                <i data-lucide="play" class="w-3 h-3 fill-current"></i> Play
+                            </button>
+                            <button id="btn-tb-rewind" class="xp-button px-1.5 py-0">⏮</button>
+                            <button id="btn-tb-step" class="xp-button px-1.5 py-0">⏭</button>
+
+                            <div class="h-3 w-px bg-[#ACA899] mx-1"></div>
+
+                            <button id="btn-onion" class="xp-button text-[10px] px-1.5 py-0 tool-active" title="Toggle Onion Skinning">
+                                🧅 Onion Skin
+                            </button>
+
+                            <div class="flex items-center gap-1 ml-2 bg-white px-1 border border-[#ACA899] rounded-xs">
+                                <span class="text-[10px] text-gray-500">FPS:</span>
+                                <input type="number" id="fps-input" value="12" min="1" max="60" class="w-8 text-[11px] font-bold text-center border-0 outline-none">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Grid Container -->
+                    <div class="flex-1 flex overflow-hidden bg-white">
+                        <!-- Layer Names Column -->
+                        <div class="w-36 bg-[#ECE9D8] border-r border-[#ACA899] flex flex-col text-[11px] overflow-y-auto" id="layer-list-container">
+                            <div class="h-5 border-b border-[#D0C3B0] bg-[#DBD6C3] px-2 flex items-center justify-between text-[10px] font-bold text-gray-600">
+                                <span>Layer Name</span>
+                                <span>🔒👁</span>
+                            </div>
+                            <!-- Layer items rendered via JS -->
+                            <div id="layer-items" class="flex flex-col"></div>
+                        </div>
+
+                        <!-- Frames Ruler and Grid Scroll -->
+                        <div class="flex-1 overflow-x-auto flex flex-col bg-[#F7F5EE]" id="timeline-scroll-area">
+                            <!-- Frame Numbers Ruler -->
+                            <div class="h-5 border-b border-[#ACA899] bg-[#E2DAC8] flex items-center text-[9px] font-mono select-none" id="timeline-ruler">
+                                <!-- Ruler numbers generated by JS -->
+                            </div>
+                            <!-- Frame Grid Track -->
+                            <div class="flex-1 flex flex-col" id="timeline-grid-track">
+                                <!-- Grid cells generated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MIDDLE WORKSPACE: LEFT TOOLBAR, STAGE, RIGHT SYMBOL LIBRARY -->
+                <div class="flex-1 flex overflow-hidden gap-1">
+
+                    <!-- LEFT FLASH TOOLBAR -->
+                    <div class="w-10 bg-[#ECE9D8] xp-outset flex flex-col items-center py-1 gap-1 select-none">
+                        <button data-tool="select" title="Arrow Tool (V)" class="tool-btn xp-button w-7 h-7 flex items-center justify-center p-0 tool-active">
+                            <i data-lucide="mouse-pointer" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <button data-tool="subselect" title="Sub-selection Tool (A)" class="tool-btn xp-button w-7 h-7 flex items-center justify-center p-0">
+                            <i data-lucide="pointer" class="w-3.5 h-3.5 text-blue-700"></i>
+                        </button>
+                        <button data-tool="line" title="Line Tool (N)" class="tool-btn xp-button w-7 h-7 flex items-center justify-center p-0">
+                            <i data-lucide="minus" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <button data-tool="lasso" title="Lasso Tool (L)" class="tool-btn xp-button w-7 h-7 flex items-center justify-center p-0">
+                            <i data-lucide="lasso" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <button data-tool="pen" title="Pen Tool (P)" class="tool-btn xp-button w-7 h-7 flex items-center justify-center p-0">
+                            <i data-lucide="pen-tool" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <button data-tool="text" title="Text Tool (T)" class="tool-btn xp-button w-7 h-7 flex items-center justify-center p-0 font-bold font-serif">
+                            T
+                        </button>
+                        <button data-tool="oval" title="Oval Tool (O)" class="tool-btn xp-button w-7 h-7 flex items-center justify-center p-0">
+                            <i data-lucide="circle" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <button data-tool="rectangle" title="Rectangle Tool (R)" class="tool-btn xp-button w-7 h-7 flex items-center justify-center p-0">
+                            <i data-lucide="square" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <button data-tool="pencil" title="Pencil Tool (Y)" class="tool-btn xp-button w-7 h-7 flex items-center justify-center p-0">
+                            <i data-lucide="pencil" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <button data-tool="brush" title="Vector Brush Tool (B)" class="tool-btn xp-button w-7 h-7 flex items-center justify-center p-0">
+                            <i data-lucide="paintbrush" class="w-3.5 h-3.5 text-emerald-800"></i>
+                        </button>
+                        <button data-tool="eraser" title="Eraser Tool (E)" class="tool-btn xp-button w-7 h-7 flex items-center justify-center p-0">
+                            <i data-lucide="eraser" class="w-3.5 h-3.5 text-red-700"></i>
+                        </button>
+
+                        <div class="w-7 h-px bg-[#ACA899] my-0.5"></div>
+
+                        <!-- STROKE & FILL COLOR SWATCHES -->
+                        <div class="flex flex-col items-center gap-1">
+                            <!-- Stroke Swatch -->
+                            <div class="flex items-center gap-0.5" title="Stroke Color">
+                                <span class="text-[9px] font-bold">S:</span>
+                                <input type="color" id="stroke-color" value="#000000" class="w-4 h-4 p-0 border-0 cursor-pointer bg-transparent">
+                            </div>
+                            <!-- Fill Swatch -->
+                            <div class="flex items-center gap-0.5" title="Fill Color">
+                                <span class="text-[9px] font-bold">F:</span>
+                                <input type="color" id="fill-color" value="#22C55E" class="w-4 h-4 p-0 border-0 cursor-pointer bg-transparent">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CENTER STAGE AREA -->
+                    <div class="flex-1 bg-[#808080] xp-inset flex flex-col items-center justify-center p-4 relative overflow-auto" id="stage-viewport">
+                        <!-- Canvas Stage Paper Container -->
+                        <div class="relative bg-white shadow-2xl border border-black" style="width: 650px; height: 420px;" id="canvas-paper">
+                            <!-- Vector Canvas -->
+                            <canvas id="flash-stage" width="650" height="420" class="cursor-crosshair w-full h-full block"></canvas>
+
+                            <!-- Canvas Stage Info Overlay -->
+                            <div class="absolute bottom-1 right-2 pointer-events-none text-[10px] text-gray-400 font-mono">
+                                Stage: 650 x 420 px
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT DOCKED PANEL: LIBRARY & ASSETS -->
+                    <div class="w-44 bg-[#ECE9D8] xp-outset flex flex-col select-none">
+                        <div class="h-5 bg-[#DBD6C3] border-b border-[#ACA899] px-2 flex items-center justify-between font-bold text-[10px] text-gray-700">
+                            <span>Library - Untitled-1</span>
+                            <i data-lucide="folder-open" class="w-3 h-3"></i>
+                        </div>
+                        <div class="p-1 border-b border-[#ACA899]">
+                            <input type="text" placeholder="Filter assets..." class="w-full text-[10px] px-1 py-0.5 xp-inset">
+                        </div>
+                        <div class="flex-1 bg-white xp-inset m-1 p-1 overflow-y-auto text-[10px]" id="library-list">
+                            <div class="flex items-center gap-1 py-0.5 text-gray-600">
+                                <i data-lucide="component" class="w-3 h-3 text-blue-600"></i> Symbol 1 (Graphic)
+                            </div>
+                            <div class="flex items-center gap-1 py-0.5 text-gray-600">
+                                <i data-lucide="file-audio" class="w-3 h-3 text-emerald-600"></i> ClickSound.wav
+                            </div>
+                            <div class="flex items-center gap-1 py-0.5 text-gray-600">
+                                <i data-lucide="image" class="w-3 h-3 text-purple-600"></i> Background_XP.png
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- BOTTOM DOCKED PROPERTY INSPECTOR -->
+                <div class="h-24 bg-[#ECE9D8] xp-outset mt-1 flex flex-col select-none p-1.5">
+                    <div class="flex items-center gap-1 border-b border-[#ACA899] pb-0.5 mb-1 font-bold text-[10px] text-[#002D96]">
+                        <i data-lucide="sliders" class="w-3 h-3"></i> Properties Inspector
+                    </div>
+
+                    <div class="flex-1 flex items-center gap-6 text-[11px]" id="inspector-content">
+                        <!-- Stage/Document Settings Group -->
+                        <div class="flex flex-col gap-1 border-r border-[#ACA899] pr-4">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-gray-700">Document:</span>
+                                <span class="text-xs text-blue-900 font-mono">Size: 650 x 420 px</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span>Background Stage:</span>
+                                <input type="color" id="stage-bg-color" value="#FFFFFF" class="w-4 h-4 p-0 border-0 cursor-pointer">
+                            </div>
+                        </div>
+
+                        <!-- Tool Specific Settings -->
+                        <div class="flex flex-col gap-1 border-r border-[#ACA899] pr-4">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-gray-700">Vector Stroke:</span>
+                                <input type="range" id="stroke-width-slider" min="1" max="30" value="3" class="w-20 accent-blue-600">
+                                <span id="stroke-width-val" class="font-mono text-xs font-bold text-blue-800">3 px</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span>Cap Style:</span>
+                                <select class="text-[10px] xp-inset px-1 py-0" id="stroke-cap-select">
+                                    <option value="round">Round Cap</option>
+                                    <option value="square">Square Cap</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Object Transformation Info -->
+                        <div class="flex flex-col gap-1">
+                            <span class="font-bold text-gray-700">Active Selection:</span>
+                            <span id="selection-info" class="text-gray-500 italic">No object selected on stage.</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div id="ruffle-stage">
-                <div id="ruffle-player-container"></div>
+
+            <!-- VECTORMOTION PORTAL / HOMEPAGE VIEW (HIDDEN BY DEFAULT) -->
+            <div id="vectormotion-portal" class="hidden flex-1 flex-col bg-[#FAF5E4] p-6 overflow-y-auto w-full h-full text-slate-800">
+                <!-- Retro 2000s Header Banner -->
+                <div class="bg-gradient-to-r from-emerald-800 via-green-700 to-slate-900 text-white p-6 rounded-lg shadow-lg border-2 border-emerald-600 flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-4">
+                        <svg width="60" height="40" viewBox="0 0 100 65" class="drop-shadow-lg">
+                            <path d="M 45,5 L 15,32.5 L 45,60 L 30,60 L 0,32.5 L 30,5 Z" fill="#4ADE80" />
+                            <path d="M 80,5 L 50,32.5 L 80,60 L 65,60 L 35,32.5 L 65,5 Z" fill="#FFFFFF" />
+                        </svg>
+                        <div>
+                            <h1 class="text-2xl font-bold tracking-tight font-serif">Vectormotion Inc.</h1>
+                            <p class="text-xs text-emerald-200">Interactive Multimedia & Vector Web Standards System</p>
+                        </div>
+                    </div>
+                    
+                    <button id="btn-return-app" class="xp-button bg-emerald-500 text-slate-900 font-bold px-4 py-2 text-xs flex items-center gap-2 hover:bg-emerald-400">
+                        <i data-lucide="play-circle" class="w-4 h-4"></i> Launch Speedframe MX
+                    </button>
+                </div>
+
+                <!-- Portal Welcome Content -->
+                <div class="grid grid-cols-3 gap-6">
+                    <!-- Column 1: News & Software -->
+                    <div class="col-span-2 space-y-4">
+                        <div class="bg-white p-4 rounded border border-[#D0C3B0] shadow-sm">
+                            <h2 class="text-sm font-bold text-emerald-900 border-b border-emerald-200 pb-1 mb-2 flex items-center gap-1.5">
+                                <i data-lucide="newspaper" class="w-4 h-4 text-emerald-600"></i> Corporate News: Speedframe MX Announced
+                            </h2>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Vectormotion Incorporated is proud to release Speedframe MX 2004. Delivering state-of-the-art frame-by-frame vector animation, sub-selection transformations, and real-time timeline keyframing built for next-generation web browsers.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-4 rounded border border-[#D0C3B0] shadow-sm">
+                            <h2 class="text-sm font-bold text-emerald-900 border-b border-emerald-200 pb-1 mb-2 flex items-center gap-1.5">
+                                <i data-lucide="box" class="w-4 h-4 text-emerald-600"></i> Vectormotion Web Suite
+                            </h2>
+                            <ul class="text-xs space-y-2 text-gray-700">
+                                <li class="flex items-center justify-between border-b border-gray-100 pb-1">
+                                    <span class="font-bold text-emerald-800">Speedframe MX 2004</span>
+                                    <span class="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded">Installed</span>
+                                </li>
+                                <li class="flex items-center justify-between border-b border-gray-100 pb-1">
+                                    <span class="font-bold text-slate-700">Vector Weaver HTML</span>
+                                    <span class="text-[10px] text-gray-400">v4.0</span>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <span class="font-bold text-slate-700">Motion Generator Studio</span>
+                                    <span class="text-[10px] text-gray-400">v2.1</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Ecosystem Lore -->
+                    <div class="space-y-4">
+                        <div class="bg-[#F0EAD6] p-4 rounded border border-[#C5B8A5]">
+                            <h3 class="text-xs font-bold text-amber-900 mb-2 uppercase tracking-wide">Ecosystem Note</h3>
+                            <p class="text-xs text-amber-950/80 leading-relaxed italic">
+                                "Vectormotion Inc. continues its mission as the pioneer of interactive vector media prior to future consolidation into Greenbox Systems Incorporated."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BOTTOM STATUS BAR -->
+        <div class="h-5 bg-[#ECE9D8] border-t border-[#ACA899] flex items-center justify-between px-2 text-[10px] text-gray-600 select-none">
+            <div class="flex items-center space-x-4">
+                <span id="status-tool" class="flex items-center gap-1 font-bold text-blue-900">
+                    <i data-lucide="mouse-pointer" class="w-3 h-3"></i> Tool: Vector Brush
+                </span>
+                <span class="text-gray-400">|</span>
+                <span id="status-coords" class="font-mono">X: 0px, Y: 0px</span>
+            </div>
+            <div class="flex items-center space-x-3 font-mono text-[10px]">
+                <span id="status-frame">Frame: 1 / 12</span>
+                <span class="text-emerald-700 font-bold">Vectormotion Engine v1.0</span>
             </div>
         </div>
+
     </div>
 
     <script>
-        // App State
-        let currentTool = 'brush';
-        let currentFrame = 1;
-        let totalFrames = 25;
-        let isPlaying = false;
-        let playInterval = null;
-        let fps = 12;
-
-        // Frame Data Model: Stores drawing vector paths per frame
-        let frameData = {
-            1: []
+        // --- APP STATE ---
+        const appState = {
+            currentTool: 'brush', // brush, select, pencil, oval, rectangle, line, eraser
+            strokeColor: '#000000',
+            fillColor: '#22C55E',
+            strokeWidth: 3,
+            strokeCap: 'round',
+            layers: [
+                { id: 1, name: 'Layer 1', visible: true, locked: false, frames: [ [] ] }
+            ],
+            activeLayerIndex: 0,
+            currentFrame: 0,
+            totalFrames: 12,
+            isPlaying: false,
+            fps: 12,
+            onionSkin: true,
+            playInterval: null,
+            isDrawing: false,
+            startX: 0,
+            startY: 0,
+            currentPath: null,
+            selectedShapeIndex: -1,
+            showGrid: false,
+            stageBg: '#FFFFFF'
         };
 
-        // Canvas Setup
-        const canvas = document.getElementById('stage-canvas');
+        // --- DOM REFERENCES ---
+        const canvas = document.getElementById('flash-stage');
         const ctx = canvas.getContext('2d');
-        let isDrawing = false;
-        let startX, startY;
+        const vmLogoBtn = document.getElementById('vm-logo-btn');
+        const speedframeWorkspace = document.getElementById('speedframe-workspace');
+        const vectormotionPortal = document.getElementById('vectormotion-portal');
+        const btnReturnApp = document.getElementById('btn-return-app');
 
-        // Init Timeline UI
-        function initTimeline() {
-            const ruler = document.getElementById('ruler-container');
-            const track = document.getElementById('track-container');
+        // --- INITIALIZATION ---
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            initTimelineGrid();
+            setupEventListeners();
+            renderCanvas();
+        });
+
+        // --- TIMELINE CONTROLLER ---
+        function initTimelineGrid() {
+            const ruler = document.getElementById('timeline-ruler');
+            const layerItems = document.getElementById('layer-items');
+            const gridTrack = document.getElementById('timeline-grid-track');
+
+            // Render Ruler
             ruler.innerHTML = '';
-            track.innerHTML = '';
-
-            for (let i = 1; i <= totalFrames; i++) {
-                // Ruler number
-                const num = document.createElement('div');
-                num.className = 'ruler-num';
-                num.innerText = i % 5 === 0 || i === 1 ? i : '.';
-                ruler.appendChild(num);
-
-                // Frame cell
+            for (let i = 0; i < appState.totalFrames; i++) {
                 const cell = document.createElement('div');
-                cell.className = 'frame-cell' + (frameData[i] ? ' keyframe' : '') + (i === currentFrame ? ' active-frame' : '');
-                cell.onclick = () => goToFrame(i);
-                track.appendChild(cell);
-            }
-        }
-
-        // Tool Selection
-        function selectTool(tool) {
-            currentTool = tool;
-            document.querySelectorAll('.palette-icon').forEach(el => el.classList.remove('selected'));
-            document.getElementById('tool-' + tool).classList.add('selected');
-        }
-
-        // Canvas Drawing Logic
-        canvas.addEventListener('mousedown', (e) => {
-            isDrawing = true;
-            const rect = canvas.getBoundingClientRect();
-            startX = e.clientX - rect.left;
-            startY = e.clientY - rect.top;
-
-            if (!frameData[currentFrame]) {
-                frameData[currentFrame] = [];
+                cell.className = 'w-[9px] flex-shrink-0 text-center border-r border-[#ACA899]';
+                cell.textContent = (i + 1) % 5 === 0 ? (i + 1) : '';
+                ruler.appendChild(cell);
             }
 
-            if (currentTool === 'brush') {
-                ctx.beginPath();
-                ctx.moveTo(startX, startY);
-                frameData[currentFrame].push({
-                    type: 'path',
-                    points: [{x: startX, y: startY}],
-                    color: document.getElementById('stroke-color').value,
-                    width: document.getElementById('stroke-width').value
+            // Render Layer Items
+            layerItems.innerHTML = '';
+            appState.layers.forEach((layer, lIdx) => {
+                const item = document.createElement('div');
+                item.className = `h-5 px-2 flex items-center justify-between border-b border-[#D0C3B0] cursor-pointer ${lIdx === appState.activeLayerIndex ? 'bg-[#316AC5] text-white' : 'hover:bg-[#E2DAC8]'}`;
+                item.innerHTML = `
+                    <span class="truncate font-bold text-[10px]">${layer.name}</span>
+                    <span class="text-[9px]">🔓👁</span>
+                `;
+                item.addEventListener('click', () => {
+                    appState.activeLayerIndex = lIdx;
+                    initTimelineGrid();
+                    renderCanvas();
                 });
-            }
-        });
+                layerItems.appendChild(item);
+            });
 
-        canvas.addEventListener('mousemove', (e) => {
-            if (!isDrawing) return;
-            const rect = canvas.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            // Render Frame Cells Grid
+            gridTrack.innerHTML = '';
+            appState.layers.forEach((layer, lIdx) => {
+                const row = document.createElement('div');
+                row.className = 'flex h-5 border-b border-[#D0C3B0]';
 
-            if (currentTool === 'brush') {
-                ctx.strokeStyle = document.getElementById('stroke-color').value;
-                ctx.lineWidth = document.getElementById('stroke-width').value;
-                ctx.lineCap = 'round';
-                ctx.lineTo(x, y);
-                ctx.stroke();
+                for (let fIdx = 0; fIdx < appState.totalFrames; fIdx++) {
+                    const cell = document.createElement('div');
+                    const hasKeyframe = layer.frames[fIdx] && layer.frames[fIdx].length > 0;
+                    const isActive = (fIdx === appState.currentFrame && lIdx === appState.activeLayerIndex);
 
-                const currentPath = frameData[currentFrame][frameData[currentFrame].length - 1];
-                if (currentPath && currentPath.points) {
-                    currentPath.points.push({x, y});
-                }
-            }
-        });
-
-        canvas.addEventListener('mouseup', (e) => {
-            if (!isDrawing) return;
-            isDrawing = false;
-            const rect = canvas.getBoundingClientRect();
-            const endX = e.clientX - rect.left;
-            const endY = e.clientY - rect.top;
-
-            const strokeColor = document.getElementById('stroke-color').value;
-            const fillColor = document.getElementById('fill-color').value;
-            const strokeWidth = document.getElementById('stroke-width').value;
-
-            if (currentTool === 'rect') {
-                frameData[currentFrame].push({
-                    type: 'rect',
-                    x: Math.min(startX, endX),
-                    y: Math.min(startY, endY),
-                    w: Math.abs(endX - startX),
-                    h: Math.abs(endY - startY),
-                    stroke: strokeColor,
-                    fill: fillColor,
-                    width: strokeWidth
-                });
-                renderFrame(currentFrame);
-            } else if (currentTool === 'circle') {
-                const radius = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
-                frameData[currentFrame].push({
-                    type: 'circle',
-                    cx: startX,
-                    cy: startY,
-                    r: radius,
-                    stroke: strokeColor,
-                    fill: fillColor,
-                    width: strokeWidth
-                });
-                renderFrame(currentFrame);
-            } else if (currentTool === 'line') {
-                frameData[currentFrame].push({
-                    type: 'line',
-                    x1: startX,
-                    y1: startY,
-                    x2: endX,
-                    y2: endY,
-                    stroke: strokeColor,
-                    width: strokeWidth
-                });
-                renderFrame(currentFrame);
-            }
-
-            initTimeline();
-        });
-
-        // Render Frame Data onto Stage
-        function renderFrame(frameNum) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const items = frameData[frameNum] || [];
-
-            items.forEach(item => {
-                ctx.beginPath();
-                if (item.type === 'path') {
-                    ctx.strokeStyle = item.color;
-                    ctx.lineWidth = item.width;
-                    ctx.lineCap = 'round';
-                    item.points.forEach((pt, idx) => {
-                        if (idx === 0) ctx.moveTo(pt.x, pt.y);
-                        else ctx.lineTo(pt.x, pt.y);
+                    cell.className = `tl-frame-cell ${hasKeyframe ? 'has-keyframe' : ''} ${isActive ? 'active-frame' : ''}`;
+                    cell.addEventListener('click', () => {
+                        appState.currentFrame = fIdx;
+                        appState.activeLayerIndex = lIdx;
+                        initTimelineGrid();
+                        renderCanvas();
                     });
-                    ctx.stroke();
-                } else if (item.type === 'rect') {
-                    ctx.fillStyle = item.fill;
-                    ctx.strokeStyle = item.stroke;
-                    ctx.lineWidth = item.width;
-                    ctx.fillRect(item.x, item.y, item.w, item.h);
-                    ctx.strokeRect(item.x, item.y, item.w, item.h);
-                } else if (item.type === 'circle') {
-                    ctx.fillStyle = item.fill;
-                    ctx.strokeStyle = item.stroke;
-                    ctx.lineWidth = item.width;
-                    ctx.arc(item.cx, item.cy, item.r, 0, 2 * Math.PI);
-                    ctx.fill();
-                    ctx.stroke();
-                } else if (item.type === 'line') {
-                    ctx.strokeStyle = item.stroke;
-                    ctx.lineWidth = item.width;
-                    ctx.moveTo(item.x1, item.y1);
-                    ctx.lineTo(item.x2, item.y2);
+                    row.appendChild(cell);
+                }
+                gridTrack.appendChild(row);
+            });
+
+            document.getElementById('status-frame').textContent = `Frame: ${appState.currentFrame + 1} / ${appState.totalFrames}`;
+        }
+
+        // --- CANVAS RENDER ENGINE ---
+        function renderCanvas() {
+            // Background fill
+            ctx.fillStyle = appState.stageBg;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Render Optional Grid
+            if (appState.showGrid) {
+                ctx.strokeStyle = '#E2E8F0';
+                ctx.lineWidth = 1;
+                for (let x = 0; x < canvas.width; x += 20) {
+                    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+                }
+                for (let y = 0; y < canvas.height; y += 20) {
+                    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+                }
+            }
+
+            const activeLayer = appState.layers[appState.activeLayerIndex];
+            if (!activeLayer) return;
+
+            // 1. Render Onion Skinning (Previous Frame)
+            if (appState.onionSkin && appState.currentFrame > 0) {
+                const prevFrameShapes = activeLayer.frames[appState.currentFrame - 1] || [];
+                ctx.save();
+                ctx.globalAlpha = 0.3;
+                prevFrameShapes.forEach(shape => drawVectorShape(shape));
+                ctx.restore();
+            }
+
+            // 2. Render Current Frame Shapes
+            const currentShapes = activeLayer.frames[appState.currentFrame] || [];
+            currentShapes.forEach((shape, idx) => {
+                const isSelected = (idx === appState.selectedShapeIndex);
+                drawVectorShape(shape, isSelected);
+            });
+
+            // 3. Render Active Path
+            if (appState.isDrawing && appState.currentPath) {
+                drawVectorShape(appState.currentPath);
+            }
+        }
+
+        function drawVectorShape(shape, isSelected = false) {
+            ctx.save();
+            ctx.lineWidth = shape.strokeWidth;
+            ctx.strokeStyle = shape.strokeColor;
+            ctx.fillStyle = shape.fillColor;
+            ctx.lineCap = shape.strokeCap || 'round';
+            ctx.lineJoin = 'round';
+
+            if (shape.type === 'brush' || shape.type === 'pencil') {
+                if (shape.points && shape.points.length > 1) {
+                    ctx.beginPath();
+                    ctx.moveTo(shape.points[0].x, shape.points[0].y);
+                    for (let i = 1; i < shape.points.length; i++) {
+                        ctx.lineTo(shape.points[i].x, shape.points[i].y);
+                    }
                     ctx.stroke();
                 }
+            } else if (shape.type === 'rectangle') {
+                ctx.beginPath();
+                ctx.rect(shape.x, shape.y, shape.w, shape.h);
+                ctx.fill();
+                ctx.stroke();
+            } else if (shape.type === 'oval') {
+                ctx.beginPath();
+                ctx.ellipse(shape.x + shape.w/2, shape.y + shape.h/2, Math.abs(shape.w/2), Math.abs(shape.h/2), 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+            } else if (shape.type === 'line') {
+                ctx.beginPath();
+                ctx.moveTo(shape.x1, shape.y1);
+                ctx.lineTo(shape.x2, shape.y2);
+                ctx.stroke();
+            }
+
+            // Selection Bounding Box Overlay
+            if (isSelected) {
+                const b = getBounds(shape);
+                ctx.strokeStyle = '#316AC5';
+                ctx.lineWidth = 1;
+                ctx.setLineDash([3, 3]);
+                ctx.strokeRect(b.x - 3, b.y - 3, b.w + 6, b.h + 6);
+            }
+
+            ctx.restore();
+        }
+
+        function getBounds(shape) {
+            if (shape.type === 'rectangle' || shape.type === 'oval') {
+                return { x: shape.x, y: shape.y, w: shape.w, h: shape.h };
+            } else if (shape.type === 'brush' || shape.type === 'pencil') {
+                let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+                shape.points.forEach(p => {
+                    minX = Math.min(minX, p.x); minY = Math.min(minY, p.y);
+                    maxX = Math.max(maxX, p.x); maxY = Math.max(maxY, p.y);
+                });
+                return { x: minX, y: minY, w: maxX - minX, h: maxY - minY };
+            }
+            return { x: 0, y: 0, w: 20, h: 20 };
+        }
+
+        // --- INTERACTION EVENT LISTENERS ---
+        function setupEventListeners() {
+            // Portal Toggle Listeners
+            vmLogoBtn.addEventListener('click', () => {
+                speedframeWorkspace.classList.add('hidden');
+                vectormotionPortal.classList.remove('hidden');
+                vectormotionPortal.classList.add('flex');
+            });
+
+            btnReturnApp.addEventListener('click', () => {
+                vectormotionPortal.classList.remove('flex');
+                vectormotionPortal.classList.add('hidden');
+                speedframeWorkspace.classList.remove('hidden');
+            });
+
+            document.getElementById('menu-portal').addEventListener('click', () => {
+                vmLogoBtn.click();
+            });
+
+            // Tool buttons
+            document.querySelectorAll('.tool-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('tool-active'));
+                    const target = e.currentTarget;
+                    target.classList.add('tool-active');
+                    appState.currentTool = target.dataset.tool;
+                    document.getElementById('status-tool').innerHTML = `<i data-lucide="mouse-pointer" class="w-3 h-3"></i> Tool: Vector ${appState.currentTool}`;
+                    lucide.createIcons();
+                });
+            });
+
+            // Canvas drawing interaction
+            canvas.addEventListener('mousedown', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                appState.isDrawing = true;
+                appState.startX = x;
+                appState.startY = y;
+
+                const activeLayer = appState.layers[appState.activeLayerIndex];
+                if (!activeLayer.frames[appState.currentFrame]) {
+                    activeLayer.frames[appState.currentFrame] = [];
+                }
+
+                if (appState.currentTool === 'brush' || appState.currentTool === 'pencil') {
+                    appState.currentPath = {
+                        type: appState.currentTool,
+                        points: [{ x, y }],
+                        strokeColor: appState.strokeColor,
+                        fillColor: appState.fillColor,
+                        strokeWidth: appState.strokeWidth,
+                        strokeCap: appState.strokeCap
+                    };
+                } else if (appState.currentTool === 'rectangle' || appState.currentTool === 'oval') {
+                    appState.currentPath = {
+                        type: appState.currentTool,
+                        x, y, w: 0, h: 0,
+                        strokeColor: appState.strokeColor,
+                        fillColor: appState.fillColor,
+                        strokeWidth: appState.strokeWidth
+                    };
+                }
+            });
+
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const x = Math.round(e.clientX - rect.left);
+                const y = Math.round(e.clientY - rect.top);
+                document.getElementById('status-coords').textContent = `X: ${x}px, Y: ${y}px`;
+
+                if (!appState.isDrawing || !appState.currentPath) return;
+
+                if (appState.currentTool === 'brush' || appState.currentTool === 'pencil') {
+                    appState.currentPath.points.push({ x, y });
+                } else if (appState.currentTool === 'rectangle' || appState.currentTool === 'oval') {
+                    appState.currentPath.w = x - appState.startX;
+                    appState.currentPath.h = y - appState.startY;
+                }
+
+                renderCanvas();
+            });
+
+            canvas.addEventListener('mouseup', () => {
+                if (appState.isDrawing && appState.currentPath) {
+                    const activeLayer = appState.layers[appState.activeLayerIndex];
+                    activeLayer.frames[appState.currentFrame].push(appState.currentPath);
+                    appState.currentPath = null;
+                    initTimelineGrid();
+                }
+                appState.isDrawing = false;
+                renderCanvas();
+            });
+
+            // Color inputs
+            document.getElementById('stroke-color').addEventListener('input', (e) => appState.strokeColor = e.target.value);
+            document.getElementById('fill-color').addEventListener('input', (e) => appState.fillColor = e.target.value);
+            document.getElementById('stroke-width-slider').addEventListener('input', (e) => {
+                appState.strokeWidth = parseInt(e.target.value);
+                document.getElementById('stroke-width-val').textContent = `${e.target.value} px`;
+            });
+
+            // Stage Background
+            document.getElementById('stage-bg-color').addEventListener('input', (e) => {
+                appState.stageBg = e.target.value;
+                renderCanvas();
+            });
+
+            // Playback controls
+            document.getElementById('btn-tb-play').addEventListener('click', togglePlayback);
+            document.getElementById('menu-play').addEventListener('click', togglePlayback);
+            document.getElementById('btn-tb-rewind').addEventListener('click', () => {
+                appState.currentFrame = 0;
+                initTimelineGrid();
+                renderCanvas();
+            });
+
+            // Onion skin button
+            document.getElementById('btn-onion').addEventListener('click', (e) => {
+                appState.onionSkin = !appState.onionSkin;
+                e.currentTarget.classList.toggle('tool-active', appState.onionSkin);
+                renderCanvas();
+            });
+
+            // Layers addition
+            document.getElementById('btn-add-layer').addEventListener('click', () => {
+                const count = appState.layers.length + 1;
+                appState.layers.push({
+                    id: count,
+                    name: `Layer ${count}`,
+                    visible: true,
+                    locked: false,
+                    frames: [ [] ]
+                });
+                appState.activeLayerIndex = appState.layers.length - 1;
+                initTimelineGrid();
+                renderCanvas();
             });
         }
 
-        // Timeline Frame Navigation
-        function goToFrame(frameNum) {
-            currentFrame = frameNum;
-            document.getElementById('frame-counter').innerText = `Frame: ${currentFrame} / ${totalFrames}`;
-            initTimeline();
-            renderFrame(currentFrame);
-        }
+        function togglePlayback() {
+            appState.isPlaying = !appState.isPlaying;
+            const playBtn = document.getElementById('btn-tb-play');
 
-        function addKeyframe() {
-            if (!frameData[currentFrame]) {
-                frameData[currentFrame] = [];
-            }
-            initTimeline();
-        }
-
-        function clearCanvas() {
-            frameData = { 1: [] };
-            goToFrame(1);
-        }
-
-        function updateFPS(val) {
-            fps = parseInt(val) || 12;
-            if (isPlaying) {
-                togglePlay();
-                togglePlay();
-            }
-        }
-
-        function updateStageBG(color) {
-            canvas.style.backgroundColor = color;
-        }
-
-        // Playhead Controls
-        function togglePlay() {
-            const btn = document.getElementById('play-btn');
-            if (isPlaying) {
-                clearInterval(playInterval);
-                isPlaying = false;
-                btn.innerText = '▶ Play';
+            if (appState.isPlaying) {
+                playBtn.innerHTML = `<i data-lucide="pause" class="w-3 h-3 fill-current"></i> Stop`;
+                lucide.createIcons();
+                appState.playInterval = setInterval(() => {
+                    appState.currentFrame = (appState.currentFrame + 1) % appState.totalFrames;
+                    initTimelineGrid();
+                    renderCanvas();
+                }, 1000 / appState.fps);
             } else {
-                isPlaying = true;
-                btn.innerText = '█ Stop';
-                playInterval = setInterval(() => {
-                    currentFrame = currentFrame >= totalFrames ? 1 : currentFrame + 1;
-                    goToFrame(currentFrame);
-                }, 1000 / fps);
+                playBtn.innerHTML = `<i data-lucide="play" class="w-3 h-3 fill-current"></i> Play`;
+                lucide.createIcons();
+                clearInterval(appState.playInterval);
             }
         }
-
-        // SWF / Ruffle Integration Modal
-        function exportSWF() {
-            const modal = document.getElementById('ruffle-modal');
-            const container = document.getElementById('ruffle-player-container');
-            container.innerHTML = '';
-
-            modal.style.display = 'flex';
-
-            // Instantiate Ruffle Player
-            if (window.RufflePlayer) {
-                const ruffle = window.RufflePlayer.newest();
-                const player = ruffle.createPlayer();
-                player.style.width = '550px';
-                player.style.height = '300px';
-                container.appendChild(player);
-
-                // Load preview rendering directly
-                const previewCanvas = document.createElement('canvas');
-                previewCanvas.width = 550;
-                previewCanvas.height = 300;
-                const pCtx = previewCanvas.getContext('2d');
-                pCtx.fillStyle = '#ffffff';
-                pCtx.fillRect(0,0,550,300);
-
-                // Render current frame into Ruffle preview window
-                const currentData = frameData[currentFrame] || [];
-                currentData.forEach(item => {
-                    if (item.type === 'rect') {
-                        pCtx.fillStyle = item.fill;
-                        pCtx.fillRect(item.x, item.y, item.w, item.h);
-                    }
-                });
-            }
-        }
-
-        function closeRuffleModal() {
-            document.getElementById('ruffle-modal').style.display = 'none';
-        }
-
-        // Initialize Workspace
-        initTimeline();
-        renderFrame(1);
     </script>
 </body>
 </html>
